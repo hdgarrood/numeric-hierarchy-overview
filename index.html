@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PureScript numeric hierarchy overview</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link type="text/css" href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <h1>PureScript numeric hierarchy overview</h1>
+      <div class="overview">
+        <svg id="svg-arrows"
+             xmlns="http://www.w3.org/2000/svg"
+             version="1.1"
+             viewBox="0 0 100 100"
+             style="width:100%; height:100%; position:absolute; top:0; left:0; z-index:1;">
+          <defs>
+            <marker id="arrow-marker-end" markerwidth="7" markerheight="7" refx="4" refy="3" orient="auto">
+              <path d="M1,1 L1,6 L5,3 L1,1"></path>
+            </marker>
+          </defs>
+
+          <path data-from="ring" data-to="semiring" class="arrow" d=""></path>
+          <path data-from="commutative-ring" data-to="ring" class="arrow" d=""></path>
+          <path data-from="euclidean-ring" data-to="commutative-ring" class="arrow" d=""></path>
+          <path data-from="division-ring" data-to="ring" class="arrow" d=""></path>
+          <path data-from="field" data-to="commutative-ring" class="arrow" d=""></path>
+          <path data-from="field" data-to="division-ring" class="arrow" d=""></path>
+          <path data-from="field" data-to="euclidean-ring" class="arrow" d=""></path>
+        </svg>
+
+        <div class="structure-row">
+          <div id="semiring" class="structure">
+            <h2>Semiring</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>set with commutative addition monoid and multiplication monoid
+              (not necessarily commutative), with distributivity of
+              multiplication over addition</dd>
+
+              <dt>provides</dt>
+              <dd><code>zero, one, add (+), mul (*)</code></dd>
+
+              <dt>examples</dt>
+              <dd>Natural numbers, \(\mathbb{N}\)</dd>
+              <dd>Boolean semiring \((1 + 1 = 1)\)</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="arrow-container">
+        </div>
+        <div class="structure-row">
+          <div id="ring" class="structure">
+            <h2>Ring</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>semiring where addition forms a group, not just a monoid</dd>
+
+              <dt>provides</dt>
+              <dd><code>sub (-)</code></dd>
+
+              <dt>examples</dt>
+              <dd>Square matrices, e.g. \(\mathrm{Mat}(2,\mathbb{R})\)</dd>
+              <dd>Linear mappings \(V \to V\) for some vector space \(V\)</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="arrow-container">
+        </div>
+        <div class="structure-row">
+          <div id="commutative-ring" class="structure">
+            <h2>Commutative Ring</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>ring where multiplication is commutative</dd>
+
+              <dt>provides</dt>
+              <dd>(no extra methods)</dd>
+
+              <dt>examples</dt>
+              <dd>Integers modulo \(m\), where \(m \in \mathbb{N}\)</dd>
+            </dl>
+          </div>
+          <div id="division-ring" class="structure">
+            <h2>Division Ring</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>ring where every non-zero element has a multiplicative inverse</dd>
+
+              <dt>provides</dt>
+              <dd><code>recip</code></dd>
+
+              <dt>examples</dt>
+              <dd>Quaternions, \(\mathbb{H}\)</dd>
+            </dl>
+          </div>
+        </div>
+        <div class="arrow-container">
+        </div>
+        <div class="structure-row">
+          <div id="euclidean-ring" class="structure">
+            <h2>Euclidean Ring</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>non-zero commutative ring with no zero-divisors, equipped
+              with a euclidean function</dd>
+
+              <dt>provides</dt>
+              <dd><code>div (/), mod, degree</code></dd>
+
+              <dt>examples</dt>
+              <dd>Integers, \(\mathbb{Z}\)</dd>
+              <dd>Polynomials, \(\mathbb{R}[x]\)</dd>
+            </dl>
+          </div>
+          <div id="field" class="structure">
+            <h2>Field</h2>
+            <dl>
+              <dt>definition</dt>
+              <dd>commutative ring in which every non-zero element has a
+              multiplicative inverse</dd>
+
+              <dt>provides</dt>
+              <dd>(no extra methods)</dd>
+
+              <dt>examples</dt>
+              <dd>Reals, \(\mathbb{R}\)</dd>
+              <dd>Rationals, \(\mathbb{Q}\)</dd>
+              <dd>Complex numbers, \(\mathbb{C}\)</dd>
+              <dd>Integers modulo \(p\), where \(p\) is prime</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <p class="credits">
+        By <a href="https://harry.garrood.me/">Harry Garrood</a>
+      </p>
+    </div>
+
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    <script src="mIsForMarkup.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

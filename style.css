@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Lato', sans-serif;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80em;
+}
+
+.credits {
+  text-align: right;
+  font-style: italic;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.overview {
+  /* set position to relative to enable use of offsetLeft and offsetTop for
+   * children */
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 50em;
+}
+
+.structure-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrow-container {
+  width: 2em;
+}
+
+.structure {
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 1em;
+  margin: auto;
+  max-width: 15em;
+}
+
+.structure dd {
+  margin-left: 1em;
+  padding: 0;
+}
+
+svg path.arrow {
+  stroke:black;
+  stroke-width:4px;
+  fill:none;
+  marker-end:url(#arrow-marker-end);
+}
