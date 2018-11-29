@@ -47,9 +47,22 @@ h2 {
   max-width: 15em;
 }
 
-.structure dd {
+h2 {
+  font-variant: small-caps;
+}
+
+dd {
   margin-left: 1em;
   padding: 0;
+}
+
+dt {
+  font-weight: bold;
+}
+
+code {
+  font-size: 120%;
+  background-color: #eee;
 }
 
 svg path.arrow {
