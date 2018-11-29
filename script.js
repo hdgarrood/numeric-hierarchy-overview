@@ -52,11 +52,6 @@ function drawArrow(id, x1, y1, x2, y2) {
   return path;
 }
 
-
-// var arrow = drawArrow('arrow1', c2.x, c2.y, c1.x, c1.y);
-// svg.appendChild(arrow);
-//
-
 function makePath(elFrom, elTo) {
   var fromLeft = elFrom.offsetLeft;
   var fromRight = elFrom.offsetLeft + elFrom.offsetWidth;
