@@ -25,12 +25,20 @@ function distance(v, w) {
   return Math.sqrt(Math.pow(v.x - w.x, 2) + Math.pow(v.y - w.y, 2));
 }
 
-function getElementCenter(el) {
-  return {
-    x: el.offsetLeft + el.offsetWidth / 2,
-    y: el.offsetTop + el.offsetHeight / 2,
-  }
+function normalize(v) {
+  var norm = distance(v, {x:0, y:0});
+  return { x: v.x / norm, y: v.y / norm };
 }
+
+// Shift v away from w by the specified distance.
+function shiftAwayBy(v, w, dist) {
+  var d = normalize({ x: v.x - w.x, y: v.y - w.y });
+  return {
+    x: v.x + dist * d.x,
+    y: v.y + dist * d.y
+  };
+}
+
 
 // Given absolute coordinates (the same as those returned by
 // Element.getBoundingClientRect), return a path element representing an arrow
@@ -121,7 +129,9 @@ function makePath(elFrom, elTo) {
     finishPoint = vertDist < horzDist ? finishVert : finishHorz;
   }
 
-  return pathString(startPoint, finishPoint);
+  return pathString(
+    shiftAwayBy(startPoint, fromC, 5),
+    shiftAwayBy(finishPoint, toC, 5));
 }
 
 function pathString(v, w) {
@@ -129,8 +139,6 @@ function pathString(v, w) {
 }
 
 function go() {
-  console.log("Resizing");
-
   var svg = document.getElementById('svg-arrows');
   var container = svg.parentNode;
   svg.setAttribute("viewBox",
@@ -145,6 +153,7 @@ function go() {
 }
 
 go();
+
 window.onresize = go;
 
 // Resize our arrows after MathJax rendering
